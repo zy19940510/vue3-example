@@ -2,6 +2,7 @@
   <div>count: {{ count }}</div>
   <div>doubleCount: {{ doubleCount }}</div>
   <div>obj.foo: {{ obj.foo }}</div>
+  <div>obj.foo: {{ foo }}</div>
   <button @click="add">add</button>
   <div>
     <span v-for="item in arr" :key="item">{{ item }}</span>
@@ -9,7 +10,7 @@
 </template>
 
 <script>
-import { ref, onMounted, reactive, computed, watch } from "vue";
+import { ref, onMounted, reactive, computed, watch, toRefs } from "vue";
 export default {
   name: "Home",
   // 1.代替了data、beforeCreate、created
@@ -61,6 +62,7 @@ export default {
       arr,
       doubleCount,
       add,
+      ...toRefs(obj),
     };
   },
 };
